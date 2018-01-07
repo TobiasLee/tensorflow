@@ -205,7 +205,7 @@ tensor = constant * constant
 print tensor.eval()
 ```
 
-`eval` 方法只有当一个启用一个默认的 `tf.Session` 才能正常工作（你可以查看 Graphs 和 Sessions 开发者指南来了解更多）。
+`eval` 方法只有当启用一个默认的 `tf.Session` 才能正常工作（你可以查看 Graphs 和 Sessions 开发者指南来了解更多）。
 
 `Tensor.eval` 方法会返回一个和张量内容相同的 numpy 数组。
 
@@ -229,7 +229,7 @@ t.eval(feed_dict={p:2.0})  # 这就能够成功，因为我们通过 feed_dict �
 注意，你可别用下面的这种方式打印 `tf.Tensor` ：
 
 ``` python
-t = <<some tensorflow operation>>
+t = <<某些 TensorFlow 操作>>
 print t  # 当计算图构建完成后，将会打印出这个张量
          # 这个张量在这种情况下没有值
 ```
@@ -245,4 +245,4 @@ t = tf.Print(t, [t])  # 我们使用 tf.Print 的返回值
 result = t + 1  # 在求 result 的值的时候 `t` 的值将会被打印
 ```
 
-当你在评估 `result` 的时候，你将会求出所有 `result` 所依赖的张量的值。因为 `result` 依赖于 `t`，因此在对 `t` 求值的时候会同时打印 `t` 的值（`t` 原来的值，即 `t = <<some tensorflow operation>>`），这样一来 t 就被打印出来了
+当你在对 `result` 求值的时候，你将会求出所有 `result` 所依赖的张量的值。因为 `result` 依赖于 `t`，因此在对 `t` 求值的时候会同时打印 `t` 的值（`t` 原来的值，即 `t = <<某些 TensorFlow 操作>>`），这样一来 t 就被打印出来了
